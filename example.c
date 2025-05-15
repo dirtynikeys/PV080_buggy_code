@@ -16,8 +16,8 @@ int main(void) {
     // iv || ciphertext
     recv_message(message);
     
-    memcpy(iv, message, sizeof(iv));
-    memcpy(ciphertext, message + 16, 32);
+    memcpy_s(iv, sizeof(iv), message, sizeof(iv));
+    memcpy_s(ciphertext, sizeof(ciphertext), message + sizeof(iv), sizeof(ciphertext));
 
     decrypt_message(iv, ciphertext, plaintext);
 
